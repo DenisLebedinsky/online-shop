@@ -1,0 +1,44 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserListType {
+  list: [UserType!]!
+  count: Float!
+}
+
+type UserType {
+  id: Int!
+  email: String!
+  roles: [UserRole!]!
+}
+
+enum UserRole {
+  User
+  Admin
+}
+
+type AuthType {
+  accessToken: String!
+  refreshToken: String!
+  accessTokenExpiresAt: Float!
+  refreshTokenExpiresAt: Float!
+}
+
+type Query {
+  profile: UserType!
+  listUsers: UserListType!
+}
+
+type Mutation {
+  login(password: String!, email: String!): AuthType!
+  refreshToken(refreshToken: String!): AuthType!
+  logout(refreshToken: String!): Boolean!
+  signup(input: UserCreateInputType!): AuthType!
+}
+
+input UserCreateInputType {
+  email: String!
+  password: String!
+  roles: [UserRole!]!
+}
