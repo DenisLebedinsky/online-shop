@@ -5,6 +5,7 @@ import {GraphQLModule} from "@nestjs/graphql";
 
 import {AuthModule} from "./auth/auth.module";
 import {UserModule} from "./user/user.module";
+import {ItemsModule} from "./items/items.module";
 import {TypeOrmConfigService} from "./typeorm.options";
 import {GqlConfigService} from "./graphql.options";
 import {JwtGuard, RolesGuard} from "./common/guards";
@@ -34,6 +35,7 @@ import {CustomValidationPipe} from "./common/pipes";
     }),
     AuthModule,
     UserModule,
+    ItemsModule,
   ],
 })
 export class AppModule {}

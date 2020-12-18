@@ -40,8 +40,7 @@ export class UserService {
       .create({
         ...data,
         password: this.createPasswordHash(data.password, data.email),
-      })
-      .save();
+      });
 
     delete user.password;
 

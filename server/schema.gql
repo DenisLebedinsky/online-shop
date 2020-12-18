@@ -25,9 +25,17 @@ type AuthType {
   refreshTokenExpiresAt: Float!
 }
 
+type ItemsType {
+  id: Int!
+  title: String!
+  description: String!
+  actual: Boolean!
+}
+
 type Query {
   profile: UserType!
   listUsers: UserListType!
+  items: ItemsType!
 }
 
 type Mutation {
@@ -35,10 +43,17 @@ type Mutation {
   refreshToken(refreshToken: String!): AuthType!
   logout(refreshToken: String!): Boolean!
   signup(input: UserCreateInputType!): AuthType!
+  createItems(data: ItemCreateInputType!): ItemsType!
 }
 
 input UserCreateInputType {
   email: String!
   password: String!
   roles: [UserRole!]!
+}
+
+input ItemCreateInputType {
+  title: String!
+  description: String!
+  actual: Boolean!
 }
